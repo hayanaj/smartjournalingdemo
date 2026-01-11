@@ -1,21 +1,12 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-            "name": "launch",
+            "name": "Run Smart Journal",
             "request": "launch",
-            "mainClass": "test",
-            "projectName": "smartjournalingdemo_f06f072"
-        },
-        {
-            "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "test",
+            "mainClass": "launch",
+            "projectName": "smartjournalingdemo_f06f072",
             "vmArgs": "--module-path \"${workspaceFolder}/lib\" --add-modules javafx.controls,javafx.fxml,javafx.swing --enable-native-access=javafx.graphics -Dprism.order=sw"
         }
     ]
