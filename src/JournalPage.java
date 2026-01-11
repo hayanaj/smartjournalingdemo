@@ -137,10 +137,6 @@ public class JournalPage {
         }
     }
 
-<<<<<<< HEAD:src/JournalPage.java
-    // ref bliali
-=======
->>>>>>> 36abe120e14c42e56da4aa4cb5925d0804d66376:smartjournaling/src/JournalPage.java
     public void viewJournal(LocalDate date) {
         WeatherRecorder recorder = new WeatherRecorder();
         WeatherResult result = recorder.getWeather("Kuala Lumpur");
@@ -161,10 +157,6 @@ public class JournalPage {
         }
     }
 
-<<<<<<< HEAD:src/JournalPage.java
-    // ref bliali
-=======
->>>>>>> 36abe120e14c42e56da4aa4cb5925d0804d66376:smartjournaling/src/JournalPage.java
     public void editJournal(LocalDate date) {
         String filePath = directoryPath() + "/" + date + ".txt";
         Scanner scan = new Scanner(System.in);
