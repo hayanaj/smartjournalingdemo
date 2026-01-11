@@ -96,7 +96,6 @@ public class JournalPage{
         }
     }
 
-    //ref bliali
     public void viewJournal(LocalDate date) {
         String filePath = directoryPath() + "/" + date + ".txt";
         try {
@@ -113,7 +112,6 @@ public class JournalPage{
         }
     }
 
-    //ref bliali
     public void editJournal(LocalDate date) {
         String filePath = directoryPath() + "/" + date + ".txt";
         Scanner scan = new Scanner(System.in);
