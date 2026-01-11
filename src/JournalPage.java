@@ -4,7 +4,6 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.*;
 
-
 public class JournalPage {
     private User user;
 
@@ -18,16 +17,19 @@ public class JournalPage {
         LocalDate today = LocalDate.now();
 
         // calculate and display dates from 6 days ago up to and including today
-        System.out.println("\n=== Journal Dates ===\n0.Main Menu");
+        System.out.println("\n=== Journal Dates ===\n0. Main Menu");
         for (int i = 6, j = 1; i >= 0; i--, j++) {
             LocalDate dateToShow = today.minusDays(i);
-            System.out.print(j + "." + dateToShow);
+            System.out.print(j + ". " + dateToShow);
             if (i == 0) {
                 System.out.print("(today)");
             }
             System.out.println("");
         }
 
+        //opttion to view older dates
+        System.out.println("\n8. Dates before " + today.minusDays(6));
+        
         // prompt user
         System.out.print("\nSelect a date to view journal, or create a new journal for today: \n>> ");
         try {
@@ -38,7 +40,9 @@ public class JournalPage {
             if (choice >= 1 && choice <= 7) {
                 LocalDate chosenDate = today.minusDays(7 - choice);
                 showDateActions(chosenDate);
-            } else {
+            }else if (choice == 8) {
+            displayOlderDates(today.minusDays(7));
+            }else {
                 System.out.println("Invalid choice. Try again.");
                 displayDates();
             }
@@ -214,6 +218,45 @@ public class JournalPage {
 
     public boolean doesJournalExist(LocalDate date) {
         return new File(directoryPath() + "/" + date + ".txt").exists();
+    }
+
+    //view older dates
+    public void displayOlderDates(LocalDate date){
+        Scanner sc = new Scanner(System.in);
+        // get date today
+        LocalDate today = LocalDate.now();
+
+        // calculate and display dates from a week ago
+        System.out.println("\n=== Journal Dates ===\n0. Back to Recent Dates");
+        for (int i = 0; i < 7; i++) {
+            LocalDate dateToShow = date.plusDays(i);
+            int menuNum = i + 1;
+            System.out.println(menuNum + ". " + dateToShow);
+        }
+
+        //option to view even older dates
+        System.out.println("\n8. Dates before "+ date);
+
+        // prompt user
+        System.out.print("\nSelect a date to view journal, or create a new journal: \n>> ");
+        try {
+            int choice = sc.nextInt();
+            if (choice == 0)
+                displayDates(); // Returns back to current week (displayDates())
+
+            if (choice >= 1 && choice <= 7) {
+                LocalDate chosenDate = date.minusDays(choice - 1);
+                showDateActions(chosenDate);
+            }else if (choice == 8) {
+                displayOlderDates(date.minusDays(7));
+            }else {
+                System.out.println("Invalid choice. Try again.");
+                displayOlderDates(date);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a valid number.");
+            displayDates();
+        }
     }
 
 }
