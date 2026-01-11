@@ -3,12 +3,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.*;
+//javafx imports
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 
 public class JournalPage {
     private User user;
 
     public JournalPage(User user) {
         this.user = user;
+        try {
+            new JFXPanel(); 
+            Platform.setImplicitExit(false); 
+        } catch (Exception e) {
+    }
     }
 
     public void displayDates() {
